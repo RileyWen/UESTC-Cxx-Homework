@@ -1,0 +1,51 @@
+@startuml uml_shape
+
+abstract quadrangle <<abstract>> {
+    + {abstract} double area()
+    + {abstract} std::string shape()
+    + {abstract} std::string statistic()
+}
+
+class trapezoid {
+    + double area()
+    + std::string shape()
+    + std::string statistic()
+
+    # double topline
+    # double baseline
+    # double height
+}
+
+class parallelogram {
+    + double area()
+    + std::string shape()
+    + std::string statistic()
+
+    # double baseline
+    # double height
+}
+
+class rectangle {
+    + std::string shape()
+}
+
+class diamond {
+    + std::string shape()
+    + std::string statistic()
+}
+
+class square {
+    + std::string shape()
+    + std::string statistic()
+}
+
+quadrangle <|.. trapezoid
+quadrangle <|.. parallelogram
+
+parallelogram <|-- rectangle
+parallelogram <|-- diamond
+
+rectangle <|-- square
+diamond <|-- square
+
+@enduml

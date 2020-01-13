@@ -1,0 +1,31 @@
+@startuml uml_list
+
+class "list<T>::node_t"<T> {
+    + T val
+    + std::shared_ptr<node_t> next
+}
+
+class list<T> {
+    - size_t _M_size
+    - std::shared_ptr<node_t> _M_head
+
+    + void push_front(const value_type& val)
+    + iterator begin()
+    + iterator end()
+    + size_t size()
+}
+
+class "list<T>::iterator"<T> {
+    - std::shared_ptr<node_t> node_ptr
+
+    + iterator& operator++()
+    + bool operator!=(const iterator& rhs)
+    + reference operator*()
+}
+
+list *--> "list<T>::iterator"
+list *--> "list<T>::node_t"
+"list<T>::iterator" ..> "list<T>::node_t"
+
+
+@enduml
